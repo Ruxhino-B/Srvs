@@ -22,5 +22,5 @@ urlpatterns = [
     path('klient/', include('klient.urls')),
     path('makine/', include('makina.urls')),
     path('punonjes/', include('punonjes.urls')),
-    path('sherbim/', include('sherbim.urls'))
+    path('sherbime/', include('sherbim.urls'))
 ]
