@@ -10,7 +10,7 @@ urlpatterns = [
     path('kategori/<int:pk>/view/', KategoriRetrive.as_view()),
     path('kategori/<int:pk>/update/', KategoriUpdate.as_view()),
 
-    #Sherbimi
+    #Lloj_Sherbimi
     path('', SherbimiListView.as_view()),
     path('add/', SherbimCreate.as_view()),
     path('<int:pk>/view/', SherbimRetrive.as_view()),

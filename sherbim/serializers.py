@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Kategori_Sherbimi, Sherbimi, Shto_Sherbim
+from .models import Kategori_Sherbimi, Lloj_Sherbimi, Shto_Sherbim
 
 class KategoriSherbimiSerializations(serializers.ModelSerializer):
     class Meta:
@@ -9,7 +9,7 @@ class KategoriSherbimiSerializations(serializers.ModelSerializer):
 class SherbimiSerializations(serializers.ModelSerializer):
     class Meta:
         fields = '__all__'
-        model = Sherbimi
+        model = Lloj_Sherbimi
 
 class ShtoSherbimSerializations(serializers.ModelSerializer):
     class Meta:

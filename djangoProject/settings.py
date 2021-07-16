@@ -37,13 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'events',
 
     #local app
     'klient',
     'makina',
     'punonjes',
     'sherbim',
-    'srvs',
+    'servis',
 
     #3-third party app
     'rest_framework',

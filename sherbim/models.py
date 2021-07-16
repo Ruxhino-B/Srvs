@@ -18,7 +18,7 @@ class Kategori_Sherbimi(models.Model):
     def __str__(self):
         return self.emer
 
-class Sherbimi(models.Model):
+class Lloj_Sherbimi(models.Model):
     choices_lloji_makine = Lloj_Makine.objects.all().values_list('emer','emer')
     choices_variant_makine = Variant_Makine.objects.all().values_list('emer','emer')
     list_choices_lloji_makine = []
@@ -39,12 +39,7 @@ class Sherbimi(models.Model):
         return self.emer + ' ' + self.lloj_makine + ' ' + self.variant_makine
 
 class Shto_Sherbim(models.Model):
-    choices_kategoi = Sherbimi.objects.all().values_list('emer','emer')
-    list_choices_kategori = []
-    for kategori in choices_kategoi:
-        list_choices_kategori.append(kategori)
-    sherbim = models.ForeignKey(Sherbimi, on_delete=models.CASCADE)
-    kategoria = models.CharField(max_length=50, choices=list_choices_kategori)
+    sherbim = models.ForeignKey(Lloj_Sherbimi, on_delete=models.CASCADE)
     makina = models.ForeignKey(Makina, on_delete=models.CASCADE)
     date_sherbimi = models.DateField(default=django.utils.timezone.now)
     sherbimi_rradhes = models.DateField(default=one_day_hence())
@@ -52,6 +47,7 @@ class Shto_Sherbim(models.Model):
     cmimi = models.DecimalField(decimal_places=2, max_digits=999999)
     paguar = models.BooleanField(default=False)
     verifikuar = models.BooleanField(default=False)
+    koha = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.kategoria + ' ' + self.makina.targa
+        return self.sherbim.emer + ' ' + self.makina.targa

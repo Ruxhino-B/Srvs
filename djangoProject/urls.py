@@ -22,5 +22,6 @@ urlpatterns = [
     path('klient/', include('klient.urls')),
     path('makine/', include('makina.urls')),
     path('punonjes/', include('punonjes.urls')),
-    path('sherbime/', include('sherbim.urls'))
+    path('sherbime/', include('sherbim.urls')),
+    #path('events/', include('events.urls')),
 ]

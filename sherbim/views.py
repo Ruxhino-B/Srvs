@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from rest_framework import generics
 from .serializers import KategoriSherbimiSerializations, SherbimiSerializations, ShtoSherbimSerializations
-from .models import Kategori_Sherbimi, Sherbimi, Shto_Sherbim
+from .models import Kategori_Sherbimi, Lloj_Sherbimi, Shto_Sherbim
 
 # Create your views here.
 
-#Kategori Sherbimi
+#Kategori Lloj_Sherbimi
 class KategoriListView(generics.ListAPIView):
     queryset = Kategori_Sherbimi.objects.all()
     serializer_class = KategoriSherbimiSerializations
@@ -20,14 +20,14 @@ class KategoriUpdate(generics.UpdateAPIView):
     serializer_class = KategoriSherbimiSerializations
 
 
-#Sherbimi
+#Lloj_Sherbimi
 class SherbimiListView(generics.ListAPIView):
-    queryset = Sherbimi.objects.all()
+    queryset = Lloj_Sherbimi.objects.all()
     serializer_class = SherbimiSerializations
 class SherbimCreate(generics.CreateAPIView):
     serializer_class = SherbimiSerializations
 class SherbimRetrive(generics.RetrieveAPIView):
-    queryset = Sherbimi.objects.all()
+    queryset = Lloj_Sherbimi.objects.all()
     serializer_class = SherbimiSerializations
 class SherbimUpdate(generics.UpdateAPIView):
     serializer_class = SherbimiSerializations
