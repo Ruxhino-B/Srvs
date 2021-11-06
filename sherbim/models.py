@@ -33,13 +33,20 @@ class Lloj_Sherbimi(models.Model):
     variant_makine = models.CharField(max_length=20, choices=choices_variant_makine)
     viti_prodhimi = models.IntegerField(validators=[MaxValueValidator(datetime.date.today().year), MinValueValidator(1800)])
     materiali_perdorur = models.CharField(max_length=250)
-    cmimi = models.DecimalField(decimal_places=2, max_digits=99999999)
 
     def __str__(self):
         return self.emer + ' ' + self.lloj_makine + ' ' + self.variant_makine
 
+
 class Shto_Sherbim(models.Model):
-    sherbim = models.ForeignKey(Lloj_Sherbimi, on_delete=models.CASCADE)
+    class SherbimPaAprovuar(models.Manager):
+        def get_queryset(self):
+            return super().get_queryset().filter(verifikuar=False)
+    class SherbimPaPaguar(models.Manager):
+        def get_queryset(self):
+            return super().get_queryset().filter(paguar=False)
+
+    lloj_sherbimi = models.ForeignKey(Lloj_Sherbimi, on_delete=models.CASCADE)
     makina = models.ForeignKey(Makina, on_delete=models.CASCADE)
     date_sherbimi = models.DateField(default=django.utils.timezone.now)
     sherbimi_rradhes = models.DateField(default=one_day_hence())
@@ -48,6 +55,9 @@ class Shto_Sherbim(models.Model):
     paguar = models.BooleanField(default=False)
     verifikuar = models.BooleanField(default=False)
     koha = models.IntegerField(default=0)
+    objects = models.Manager()
+    sherbimPaAprovuar = SherbimPaAprovuar()
+    sherbimPaPaguar = SherbimPaPaguar()
 
     def __str__(self):
-        return self.sherbim.emer + ' ' + self.makina.targa
+        return self.lloj_sherbimi.emer + ' ' + self.makina.targa

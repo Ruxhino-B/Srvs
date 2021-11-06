@@ -47,3 +47,5 @@ class ShtimSherbimiUpdate(generics.UpdateAPIView):
     serializer_class = ShtoSherbimSerializations
 class ShtimSherbimiDestroye(generics.DestroyAPIView):
     serializer_class = ShtoSherbimSerializations
+
+

@@ -39,18 +39,24 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #'events',
 
+    'corsheaders',
+
     #local app
     'klient',
     'makina',
     'punonjes',
     'sherbim',
     'servis',
+    'administrator',
 
     #3-third party app
     'rest_framework',
     #'dj_rest_auth'
 
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+#CORS_ORIGIN_WHITELIST = ('http://localhost:4200/')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,6 +66,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoProject.urls'

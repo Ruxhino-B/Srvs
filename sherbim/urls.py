@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import KategoriListView, KategoriCreate, KategoriUpdate, KategoriDestroye, KategoriRetrive, \
     SherbimUpdate,SherbimCreate, SherbimRetrive,SherbimiListView,SherbimDestroye, \
-    ShtimSherbimiRetrive, ShtimSherbimiCreate, ShtimSherbimiDestroye, ShtimSherbimiUpdate, ShtimSherbimiListView
+    ShtimSherbimiRetrive, ShtimSherbimiCreate, ShtimSherbimiDestroye, ShtimSherbimiUpdate, \
+    ShtimSherbimiListView
 urlpatterns = [
     #kategori
     path('kategori/', KategoriListView.as_view()),
@@ -23,4 +24,5 @@ urlpatterns = [
     path('<int:pk>/view/', ShtimSherbimiRetrive .as_view()),
     path('<int:pk>/update/', ShtimSherbimiUpdate.as_view()),
     path('<int:pk>/delete/', ShtimSherbimiDestroye.as_view()),
+
 ]

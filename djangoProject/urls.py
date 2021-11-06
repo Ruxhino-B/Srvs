@@ -23,5 +23,7 @@ urlpatterns = [
     path('makine/', include('makina.urls')),
     path('punonjes/', include('punonjes.urls')),
     path('sherbime/', include('sherbim.urls')),
+    path('rezervim/', include('servis.urls')),
     #path('events/', include('events.urls')),
+    path('', include('administrator.urls')),
 ]
